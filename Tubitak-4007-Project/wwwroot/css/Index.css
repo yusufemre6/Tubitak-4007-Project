@@ -1,3 +1,7 @@
-﻿body {
+﻿.main-div {
+    background-image: url('../img/bg-minecraft.jpg'); /* Resim yolu */
+    background-size: cover; /* Resmi kapsar */
+    background-position: center; /* Resmi ortalar */
+    background-repeat: no-repeat; /* Resmi tekrar etmez */
+    height: 70vh;
 }
-
