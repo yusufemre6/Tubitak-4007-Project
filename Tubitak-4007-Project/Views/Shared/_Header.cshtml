@@ -8,19 +8,29 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li class="mx-1"><a class="btn btn-dark nav-link text-white px-4 fs-5" href="#section1">Oyunlar</a></li>
-            <li class="mx-1"><a class="btn btn-dark nav-link text-white px-4 fs-5" asp-controller="Home" asp-action="Shop">Alışveriş</a></li>
+            <li class="mx-1"><a class="btn btn-dark nav-link text-white px-4 fs-5" asp-controller="Shop" asp-action="ShopPage">Alışveriş</a></li>
             <li class="mx-1"><a class="btn btn-dark nav-link text-white px-4 fs-5" asp-controller="Home" asp-action="Community">Topluluk</a></li>
 
         </ul>
 
         <div class="col-md-3 text-end">
-            <div class="dropdown">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="~/img/shield.png" alt="lock" width="35" height="35" class="rounded-circle">
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" asp-controller="Authentication" asp-action="SignIn">Giriş Yap</a></li>
-                </ul>
+            <div class="d-flex flex-wrap align-items-center justify-content-end">
+                @{
+                    if (ViewBag.IsShop == "True")
+                    {
+                        <a class="me-3" asp-controller="Shop" asp-action="ShopBasket">
+                            <img src="~/img/shopping-cart.png" alt="lock" width="35" height="35" class="rounded-circle">
+                        </a>
+                    }
+                }
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="~/img/shield.png" alt="lock" width="35" height="35" class="rounded-circle">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Authentication" asp-action="SignIn">Giriş Yap</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>

@@ -11,8 +11,15 @@ namespace Tubitak_4007_Project.Controllers
     public class ShopController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult ShopPage()
         {
+            ViewBag.IsShop = "True";
+            return View();
+        }
+
+        public IActionResult ShopBasket()
+        {
+            ViewBag.IsShop = "True";
             return View();
         }
     }
