@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Tubitak_4007_Project.Models;
+using Newtonsoft.Json;
 
 namespace Tubitak_4007_Project.Controllers
 {
     public class ShopController : Controller
     {
-        // GET: /<controller>/
         public IActionResult ShopPage()
         {
             ViewBag.IsShop = "True";
@@ -21,6 +20,42 @@ namespace Tubitak_4007_Project.Controllers
         {
             ViewBag.IsShop = "True";
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddToCart(int id)
+        {
+            var products = ProductService.GetAllProducts();
+
+            products[id-1].amount++;
+
+            return RedirectToAction("ShopPage", "Shop"); 
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUnitToCart(int id)
+        {
+            var products = ProductService.GetAllProducts();
+
+            products[id - 1].amount--;
+
+            return RedirectToAction("ShopBasket", "Shop");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteToCart()
+        {
+            foreach (var product in ProductService.GetAllProducts())
+            {
+                product.amount = 0;
+            }
+
+            return RedirectToAction("ShopPage", "Shop");
+        }
+
+        [HttpPost]
+        public ActionResult Payment(MyViewModel myViewModel) {
+            return RedirectToAction("AlertPage", "Shop");
         }
     }
 }

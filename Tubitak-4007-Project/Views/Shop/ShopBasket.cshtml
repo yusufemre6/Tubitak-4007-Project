@@ -1,1 +1,112 @@
-﻿
+﻿@model Tubitak_4007_Project.Models.MyViewModel
+@{
+    var products = ProductService.GetAllProducts();
+    var totalPrice = 0;
+}
+
+<div class="row">
+    <div class="col-8">
+        <table class="table table-dark table-striped mt-5">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">Ürün Adı</th>
+                    <th scope="col" class="text-center">Birim Fiyatı</th>
+                    <th scope="col" class="text-center">Adeti</th>
+                    <th scope="col" class="text-center">Toplam Tutar</th>
+                    <th scope="col" class="text-center"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var product in ProductService.GetAllProducts())
+                    {
+                        int total = product.amount * product.Price;
+                        totalPrice += total;
+
+                        if (product.amount > 0)
+                        {
+                            <tr>
+                                <td class="text-center">@product.Name</td>
+                                <td class="text-center">@product.Price</td>
+                                <td class="text-center">@product.amount</td>
+                                <td class="text-center">@total</td>
+                                <td>
+                                    <form asp-controller="Shop" asp-action="DeleteUnitToCart" class="text-center" method="post">
+                                        <input type="hidden" name="id" value="@product.Id">
+                                        <input class="btn btn-danger" value="Adet Sil" type="submit" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <form asp-controller="Shop" asp-action="DeleteToCart" class="text-center" method="post">
+                                <input class="btn btn-danger" value="Sepeti Temizle" type="submit" />
+                            </form>
+                        </td>
+                        <td class="text-center">@totalPrice</td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="mt-5 bg-dark">
+            <div class="card bg-secondary text-light">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Adres Bilgileri</h2>
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="il" class="form-label">İl</label>
+                                <input type="text" class="form-control bg-dark text-light" id="il" placeholder="İlinizi giriniz">
+                            </div>
+                            <div class="col">
+                                <label for="ilce" class="form-label">İlçe</label>
+                                <input type="text" class="form-control bg-dark text-light" id="ilce" placeholder="İlçenizi giriniz">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mahalle" class="form-label">Mahalle</label>
+                            <input type="text" class="form-control bg-dark text-light" id="mahalle" placeholder="Mahallenizi giriniz">
+                        </div>
+                        <div class="mb-3">
+                            <label for="adres" class="form-label">Adres</label>
+                            <textarea class="form-control bg-dark text-light" id="adres" rows="5" placeholder="Adresinizi giriniz"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="mt-5">
+            <div class="card bg-secondary text-light">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Kredi Kartı ile Ödeme</h2>
+                    <form method="post" asp-action="Payment" asp-controller="Shop">
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label">Kart Numarası</label>
+                            <input asp-for="CreditCard.CardNumber" type="text" class="form-control bg-dark text-light" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" pattern="\d{4} \d{4} \d{4} \d{4}">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="expiryDate" class="form-label">Son Kullanma Tarihi</label>
+                                <input asp-for="CreditCard.ExpiryDate" type="text" class="form-control bg-dark text-light" id="expiryDate" placeholder="AA/YY" maxlength="5" pattern="\d{2}/\d{2}">
+                            </div>
+                            <div class="col">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input asp-for="CreditCard.Cvv" type="text" class="form-control bg-dark text-light" id="cvv" placeholder="123" maxlength="3" pattern="\d{3}">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" class="signin-button btn btn-success" value="Ödeme Yap">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
