@@ -1,6 +1,7 @@
 ﻿@model Tubitak_4007_Project.Models.MyViewModel
 @{
-    var products = ProductService.GetAllProducts();
+
+    var products = Model.Products;
     var totalPrice = 0;
 }
 
@@ -18,7 +19,7 @@
             </thead>
             <tbody>
                 @{
-                    foreach (var product in ProductService.GetAllProducts())
+                    foreach (var product in products)
                     {
                         int total = product.amount * product.Price;
                         totalPrice += total;

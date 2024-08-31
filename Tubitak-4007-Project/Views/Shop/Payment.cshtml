@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "_LayoutAlert";
+    ViewData["Title"] = "WARNING";
+    ViewData["Css"] = "~/css/Payment.css";
+}
+
+
+<div id="modal-container">
+    <div class="modal-background">
+        <div class="modal">
+            <h2>I'm a Modal</h2>
+            <p>Hear me roar.</p>
+            <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="container-fluid d-flex justify-content-center align-items-center " style="height: 100vh; width: 100vw;">
+    <div class="container mx-auto my-auto border border-danger rounded bg-light shadow-lg" style="height: 75%; width: 75%;">
+        <!-- İlk satır -->
+        <div class="row pb-3" style="height: 25%;">
+            <div class="col-3 d-flex align-items-center justify-content-center" style="height: 100%;">
+                <img src="~/img/warning.png" class="" style="max-height:100%;max-width:100%;height:auto;width:auto;">
+            </div>
+            <div class="col-9 text-danger d-flex align-items-center justify-content-center" style="height: 100%;">
+                <h3 class="font-weight-bold text-uppercase text danger">Bu Website Kredi Kartı Bilgilerinizi Çalmıştır! </h3>
+            </div>
+        </div>
+        <!-- İkinci satır -->
+        <div class="row py-3" style="height: 50%;">
+            <div class="col-12 d-flex align-items-center justify-content-center" style="height: 100%;">
+                <p class="font-weight-light text-danger fs-2">Sahte Minecraft websitesine girerek saldırganlar tarafından, kurbanlardan hassas bilgileri (örneğin, kredi kartı bilgileri) siber güvenlikte oltalama diye adlandırılan saldırıya maruz kaldınız. Saldırganlar, gerçek bir web sitesine tıpatıp benzeyen sahte bir web sitesi oluştururlar. Saldırganlar genellikle bir banka, popüler bir e-ticaret platformu ya da kullanıcıların güven duyduğu başka bir hizmetin taklidi olur.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-6 text-center">
+                <img src="~/img/double-ok.png" class="">
+            </div>
+        </div>
+        <!-- Üçüncü satır -->
+        <div class="row py-3" style="height: 15%;">
+            <div class="col-6 d-flex align-items-center justify-content-center" style="height: 100%;">
+                <a href="#" class="btn btn-outline-success btn-lg">< SİTEYE GERİ DÖN</a>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center" style="height: 100%;">
+                <div class="content">
+                    <div class="buttons">
+                        <div id="seven" class="button btn btn-outline-info btn-lg">DAHA FAZLA BİLGİ İÇİN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="~/js/Payment.js"></script>
