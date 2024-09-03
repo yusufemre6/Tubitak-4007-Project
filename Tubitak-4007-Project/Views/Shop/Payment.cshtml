@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MyViewModel
+@{
     Layout = "_LayoutAlert";
     ViewData["Title"] = "WARNING";
     ViewData["Css"] = "~/css/Payment.css";
@@ -8,17 +9,28 @@
 <div id="modal-container">
     <div class="modal-background">
         <div class="modal">
-            <h2>I'm a Modal</h2>
-            <p>Hear me roar.</p>
-            <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-                <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-            </svg>
+            <div style="font-family: Arial, sans-serif; font-size:20px; border: 2px solid #e74c3c; border-radius: 10px; padding: 20px; background-color: #fdf2f2; color: #333; margin: auto;">
+                <h2 style="text-align: center; color: #e74c3c;">Sahte Sitelerde Alışverişte Dikkat Edin!</h2>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li class="border-bottom border-danger my-2"><strong>Güvenilir Siteler:</strong> Yalnızca bilinen ve güvenilir sitelerden alışveriş yapın.</li>
+                    <li class="border-bottom border-danger my-2"><strong>URL Kontrolü:</strong> Sahte sitelerde benzer görünen URL'lere dikkat edin.</li>
+                    <li class="border-bottom border-danger my-2"><strong>SSL Sertifikası:</strong> Kilit simgesi olmayan sitelerde bilgi paylaşmayın.</li>
+                    <li class="border-bottom border-danger my-2"><strong>Aşırı İyi Teklifler:</strong> Gerçek olamayacak kadar iyi indirimlere şüpheyle yaklaşın.</li>
+                    <li class="border-bottom border-danger my-2"><strong>Önce Araştırma Yapın:</strong> Site hakkında kullanıcı yorumlarını ve şikayetleri kontrol edin.</li>
+                    <li class="border-bottom border-danger my-2"><strong>Sanal Kart Kullanın:</strong> Alışverişlerinizde sanal kart tercih edin.</li>
+                    <li class="border-bottom border-danger my-2"><strong>Güçlü Şifreler:</strong> Karmaşık ve farklı şifreler kullanın.</li>
+                    <li class="border-bottom border-danger my-2"><strong>Güncellemeleri Takip Edin:</strong> Tarayıcı ve antivirüs programlarını güncel tutun.</li>
+                    <li class="border-bottom border-danger my-2"><strong>İki Faktörlü Doğrulama:</strong> Hesaplarınızı iki aşamalı doğrulama ile koruyun.</li>
+                    <li class="border-bottom border-danger my-2"><strong>Şüpheli Mesajlara Dikkat:</strong> Kişisel bilgi isteyen mesajlara dikkat edin.</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
 <div class="container-fluid d-flex justify-content-center align-items-center " style="height: 100vh; width: 100vw;">
     <div class="container mx-auto my-auto border border-danger rounded bg-light shadow-lg" style="height: 75%; width: 75%;">
-        <!-- İlk satır -->
+
         <div class="row pb-3" style="height: 25%;">
             <div class="col-3 d-flex align-items-center justify-content-center" style="height: 100%;">
                 <img src="~/img/warning.png" class="" style="max-height:100%;max-width:100%;height:auto;width:auto;">
@@ -27,10 +39,16 @@
                 <h3 class="font-weight-bold text-uppercase text danger">Bu Website Kredi Kartı Bilgilerinizi Çalmıştır! </h3>
             </div>
         </div>
-        <!-- İkinci satır -->
-        <div class="row py-3" style="height: 50%;">
+
+        <div class="row py-3" style="height: 10%;">
             <div class="col-12 d-flex align-items-center justify-content-center" style="height: 100%;">
-                <p class="font-weight-light text-danger fs-2">Sahte Minecraft websitesine girerek saldırganlar tarafından, kurbanlardan hassas bilgileri (örneğin, kredi kartı bilgileri) siber güvenlikte oltalama diye adlandırılan saldırıya maruz kaldınız. Saldırganlar, gerçek bir web sitesine tıpatıp benzeyen sahte bir web sitesi oluştururlar. Saldırganlar genellikle bir banka, popüler bir e-ticaret platformu ya da kullanıcıların güven duyduğu başka bir hizmetin taklidi olur.</p>
+                <p class="font-weight-light text-danger" style="font-size:30px">Kart Numarası: @Model.CreditCard.CardNumber SKT: @Model.CreditCard.ExpiryDate CVV: @Model.CreditCard.Cvv</p>
+            </div>
+        </div>
+
+        <div class="row py-3" style="height: 40%;">
+            <div class="col-12 d-flex align-items-center justify-content-center" style="height: 100%; font-size:30px">
+                <p class="font-weight-light text-danger">Sahte Minecraft websitesine girerek saldırganlar tarafından, kurbanlardan hassas bilgileri (örneğin, kredi kartı bilgileri) siber güvenlikte oltalama diye adlandırılan saldırıya maruz kaldınız. Saldırganlar, gerçek bir web sitesine tıpatıp benzeyen sahte bir web sitesi oluştururlar. Saldırganlar genellikle bir banka, popüler bir e-ticaret platformu ya da kullanıcıların güven duyduğu başka bir hizmetin taklidi olur.</p>
             </div>
         </div>
         <div class="row">
@@ -38,10 +56,10 @@
                 <img src="~/img/double-ok.png" class="">
             </div>
         </div>
-        <!-- Üçüncü satır -->
+
         <div class="row py-3" style="height: 15%;">
             <div class="col-6 d-flex align-items-center justify-content-center" style="height: 100%;">
-                <a href="#" class="btn btn-outline-success btn-lg">< SİTEYE GERİ DÖN</a>
+                <a asp-controller="Shop" asp-action="ShopBasket" class="btn btn-outline-success btn-lg">SİTEYE GERİ DÖN</a>
             </div>
             <div class="col-6 d-flex align-items-center justify-content-center" style="height: 100%;">
                 <div class="content">

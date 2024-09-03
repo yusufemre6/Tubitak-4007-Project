@@ -115,7 +115,7 @@ namespace Tubitak_4007_Project.Controllers
                 return RedirectToAction("ShopBasket", "Shop");
             }
             else{
-                return View();
+                return View(myViewModel);
             }
         }
     }
