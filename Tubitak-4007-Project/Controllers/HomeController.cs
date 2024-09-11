@@ -23,6 +23,18 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Community() {
+        return View();
+    }
+
+    public IActionResult Link_Alert() {
+        return View();
+    }
+
+    public IActionResult Link_Alert2() {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
